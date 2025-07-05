@@ -19,22 +19,6 @@ Este projeto é uma aplicação de **Agenda de Contatos** desenvolvida com **Spr
 
 ---
 
-## 🗂️ Estrutura do Projeto
-
-com.demo.spring_agenda
- ├── controller          # Endpoints REST
- ├── dto
- │   ├── request         # DTOs de entrada
- │   └── response        # DTOs de saída
- ├── exception           # Classes de exceções personalizadas
- ├── model               # Entidades JPA: Contato, Endereco
- ├── repository          # Interfaces que estendem JpaRepository
- └── service             # Regras de negócio e conversões DTO ↔ Entidade
-
-
-
----
-
 ## ✅ Funcionalidades
 
 ### 📇 Endereços
@@ -106,7 +90,7 @@ com.demo.spring_agenda
    ./mvnw spring-boot:run
    ```
 
-   5. Acesse via Postman ou navegador:
+5. Acesse via Postman ou navegador:
 
       ```
       http://localhost:8080
