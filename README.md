@@ -1,95 +1,164 @@
 # 📒 Spring Agenda de Contatos
 
-Este projeto é uma aplicação de Agenda de Contatos desenvolvida com **Spring Boot**, utilizando boas práticas como separação de responsabilidades com **DTOs**, **Validação de Dados**, uso de **Lombok** para reduzir boilerplate e **Spring Data JPA** para persistência. A gestão do projeto foi feita com **Maven**.
+Este projeto é uma aplicação de **Agenda de Contatos** desenvolvida com **Spring Boot**, seguindo boas práticas de desenvolvimento como separação em camadas, uso de **DTOs**, **validação com Jakarta Validation**, **tratamento de exceções customizadas** e integração com banco de dados via **Spring Data JPA**.
 
-> ⚠️ Este projeto será atualizado futuramente para utilizar o **ModelMapper** na conversão entre as Entidades e os DTOs.
+> ⚠️ Este projeto será **futuramente atualizado** para utilizar **ModelMapper** na conversão entre entidades e DTOs, melhorando a legibilidade e manutenção do código.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-- ✅ **Java 17+**
-- ✅ **Spring Boot**
-- ✅ **Spring Data JPA**
-- ✅ **Maven** (gerenciamento de dependências)
-- ✅ **Lombok** (anotações para getters/setters, construtores e builders)
-- ✅ **Jakarta Validation** (validação de dados de entrada)
-- ✅ **H2 Database** (ou outro, conforme configuração)
-- ✅ **DTO Pattern** (Data Transfer Object)
-- 🚧 **ModelMapper** (em breve...)
+- ✅ Java 17+
+- ✅ Spring Boot
+- ✅ Spring Data JPA
+- ✅ Lombok
+- ✅ Jakarta Validation
+- ✅ Maven
+- ✅ MySQL (ou H2, configurável)
+- 🚧 ModelMapper (em breve...)
 
 ---
 
 ## 🗂️ Estrutura do Projeto
 
-- **model** → Entidade `Contact` mapeada com JPA.
-- **dto** → `ContactRequestDTO` e `ContactResponseDTO` para manipular os dados de entrada e saída.
-- **repository** → `ContactRepository` estende `JpaRepository` para simplificar o acesso ao banco.
-- **service** → `ContactService` centraliza as regras de negócio e conversão entre entidade e DTO.
-- **exception** → `ResourceNotFoundException` para tratamento de erro personalizado.
-- **controller** → (em breve... caso você ainda não tenha criado).
+com.demo.spring_agenda
+ ├── controller          # Endpoints REST
+ ├── dto
+ │   ├── request         # DTOs de entrada
+ │   └── response        # DTOs de saída
+ ├── exception           # Classes de exceções personalizadas
+ ├── model               # Entidades JPA: Contato, Endereco
+ ├── repository          # Interfaces que estendem JpaRepository
+ └── service             # Regras de negócio e conversões DTO ↔ Entidade
+
+
 
 ---
 
 ## ✅ Funcionalidades
 
-- ➕ Cadastrar um novo contato
+### 📇 Endereços
+- ➕ Cadastrar um endereço
+- 🔍 Buscar endereço por ID
+- 📃 Listar todos os endereços
+- ✏️ Atualizar endereço por ID
+- ❌ Deletar endereço por ID
+- ❌ Deletar todos os endereços
+
+### 👤 Contatos
+- ➕ Cadastrar um contato vinculado a um endereço existente
 - 🔍 Buscar contato por ID
 - 📃 Listar todos os contatos
+- ✏️ Atualizar contato por ID
 - ❌ Deletar contato por ID
 - ❌ Deletar todos os contatos
 
 ---
 
-## 🛠️ Como Executar o Projeto
+## 📦 Exemplo de Requisições (Postman)
 
-1. Clone este repositório:
+### 🔸 Cadastrar Endereço
 
-```bash
-git clone https://github.com/seu-usuario/spring-agenda-contatos.git
+**Endpoint:** `POST /api/enderecos`
+
+```json
+{
+  "rua": "Rua José",
+  "numero": "99",
+  "bairro": "Teste",
+  "cidade": "Valinhos",
+  "estado": "SP",
+  "cep": "99999-999",
+  "pais": "Brasil"
+}
 ```
+
+🖼️ **Exemplo no Postman:**
+
+
+
+### 🛢️ Visualização no Banco de Dados
+
+🖼️ **Tabela `endereco`:**
+
+
+
+🖼️ **Tabela `contato`:**
+
+
+
+**🛠️ Como Executar o Projeto**
+
+
+
+1. Clone o repositório:
+
+   ```
+   git clone https://github.com/seu-usuario/spring-agenda-contatos.git
+   
+   ```
+
+
 
 2. Acesse a pasta do projeto:
 
-```bash
-cd spring-agenda-contatos
-```
+   ```
+   cd spring-agenda-contatos
+   ```
 
-3. Compile e execute o projeto:
+   
 
-```bash
-./mvnw spring-boot:run
-```
+3. Configure o `application.properties` para apontar para o seu banco de dados:
 
-4. Acesse a aplicação via Postman, Insomnia ou qualquer cliente REST na porta padrão:
+   ```
+   spring.datasource.url=jdbc:mysql://localhost:3306/agenda_contatos
+   spring.datasource.username=root
+   spring.datasource.password=suasenha
+   spring.jpa.hibernate.ddl-auto=update
+   
+   ```
 
-```bash
-http://localhost:8080
-```
+   
 
-## ✅ Próximas Melhorias
+4. Execute o projeto:
 
-- ✅ Implementar o ModelMapper para automatizar a conversão entre DTOs e Entidades.
-- ✅ Criar camada de Controller com endpoints REST.
-- ✅ Implementar testes unitários e de integração.
-- ✅ Adicionar documentação com Swagger/OpenAPI.
-- ✅ Melhorar o tratamento de exceções.
+   ```
+   ./mvnw spring-boot:run
+   ```
 
+   
 
-## 💡 Motivação
+   5. Acesse via Postman ou navegador:
 
-Este projeto foi desenvolvido para praticar os seguintes conceitos:
-
-- Estruturação de uma aplicação Spring Boot.
-- Uso correto de DTOs para evitar o acoplamento direto com entidades.
-- Aplicação de validação de dados com jakarta.validation.
-- Boas práticas com Lombok.
-- Separação das camadas de negócio.
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT.
+      ```
+      http://localhost:8080
+      ```
 
 
 
+📈 Próximas Melhorias
 
+
+
+✅ Substituir métodos de conversão manual por **ModelMapper**
+
+✅ Adicionar Swagger para documentação da API
+
+✅ Criar testes unitários e de integração
+
+✅ Melhorar a cobertura de exceções com `@ControllerAdvice`
+
+✅ Implementar autenticação com Spring Security (futuramente)
+
+
+
+💡 Motivação
+
+
+
+Este projeto foi criado com o objetivo de:
+
+- Consolidar conhecimentos em Spring Boot.
+- Praticar o uso de DTOs e boas práticas REST.
+- Aprender validação de dados e tratamento de exceções.
+- Organizar a estrutura do projeto em camadas bem definidas.
