@@ -73,22 +73,8 @@ com.demo.spring_agenda
 }
 ```
 
-🖼️ **Exemplo no Postman:**
 
-
-
-### 🛢️ Visualização no Banco de Dados
-
-🖼️ **Tabela `endereco`:**
-
-
-
-🖼️ **Tabela `contato`:**
-
-
-
-**🛠️ Como Executar o Projeto**
-
+## 🛠️ Como Executar o Projeto
 
 
 1. Clone o repositório:
@@ -98,16 +84,12 @@ com.demo.spring_agenda
    
    ```
 
-
-
 2. Acesse a pasta do projeto:
 
    ```
    cd spring-agenda-contatos
    ```
-
    
-
 3. Configure o `application.properties` para apontar para o seu banco de dados:
 
    ```
@@ -118,15 +100,11 @@ com.demo.spring_agenda
    
    ```
 
-   
-
 4. Execute o projeto:
 
    ```
    ./mvnw spring-boot:run
    ```
-
-   
 
    5. Acesse via Postman ou navegador:
 
@@ -135,8 +113,7 @@ com.demo.spring_agenda
       ```
 
 
-
-📈 Próximas Melhorias
+## 📈 Próximas Melhorias
 
 
 
@@ -152,8 +129,7 @@ com.demo.spring_agenda
 
 
 
-💡 Motivação
-
+## 💡 Motivação
 
 
 Este projeto foi criado com o objetivo de:
